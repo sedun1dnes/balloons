@@ -1,0 +1,113 @@
+#balloon-form-container {
+    margin: 20px;
+}
+
+form {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px; /* расстояние между элементами формы */
+    align-items: center;
+    flex-wrap: wrap; /* чтобы форма не выходила за пределы экрана на маленьких экранах */
+}
+
+form label {
+    margin-bottom: 5px;
+}
+
+form input,
+form select {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 120px; /* фиксированная ширина для всех элементов */
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+#balloons-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    width: 100%; /* или фиксированная ширина */
+    height: 500px; /* например, фиксированная высота контейнера */
+}
+
+.tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 1000;
+    display: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Тень для красоты */
+}
+
+.balloon-wrapper {
+    position: relative;
+    display: inline-block;
+    opacity: 1;  /* Начальная невидимость */
+    animation: rise 2s ease-in-out forwards; /* Применение анимации подъема */
+    animation-delay: 0s;  /* Задержка анимации для каждого шарика */
+}
+
+.balloon {
+    width: 50px;
+    height: 80px;
+    background-color: #FF6347; /* Цвет шарика */
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Легкая тень */
+    transition: transform 0.2s ease;
+    display: flex; /* Включаем flexbox */
+    justify-content: center; /* Выравнивание по горизонтали */
+    align-items: center; /* Выравнивание по вертикали */
+}
+
+.balloon-name {
+    color: white; /* Цвет текста */
+    font-size: 14px; /* Размер шрифта */
+    font-weight: bold; /* Жирный шрифт */
+}
+
+.balloon:hover {
+    transform: scale(1.1); /* Увеличение при наведении */
+}
+
+.rope {
+    width: 2px;
+    height: 80px; /* Высота веревочки, можно регулировать */
+    background-color: #1b1206; /* Цвет веревочки (коричневый) */
+    position: absolute;
+    top: 100%; /* Помещаем веревочку сразу под шарик */
+    left: 50%;
+    transform: translateX(-50%); /* Выравниваем веревочку по центру шарика */
+    border-radius: 2px; /* Округление для веревочки */
+}
+
+/* Анимация подъема */
+@keyframes rise {
+    0% {
+        transform: translateY(200px); /* Начальная позиция снизу */
+        opacity: 0; /* Начальная непрозрачность */
+    }
+    100% {
+        transform: translateY(0); /* Конечная позиция сверху */
+        opacity: 1; /* Конечная непрозрачность */
+    }
+}

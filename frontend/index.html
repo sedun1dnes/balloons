@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frontend Приложение</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <p id="file-info-details">Загрузка...</p>
+    <p id="os-info-details">Загрузка...</p>
+
+    <div id="balloon-form-container">
+        <form id="balloon-form">
+            <label for="balloon-name">Имя:</label>
+            <input type="text" id="balloon-name" name="name" required>
+
+            <label for="balloon-size">Размер:</label>
+            <select id="balloon-size" name="size">
+                <option value="small">Маленький</option>
+                <option value="medium">Средний</option>
+                <option value="large">Большой</option>
+            </select>
+
+            <label for="balloon-color">Цвет:</label>
+            <input type="color" id="balloon-color" name="color" value="#ff0000" required>
+            
+            <label for="balloon-name">Описание:</label>
+            <input type="text" id="balloon-description" name="description">
+            <button type="submit">Надуть шарик</button>
+        </form>
+    </div>
+
+
+    <div id="balloons-container"></div>
+    <input type="color" id="color-picker" style="display: none;"/>
+
+  <script src="api.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

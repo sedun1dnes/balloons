@@ -1,0 +1,35 @@
+services:
+  srv:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: srv
+    ports:
+      - "3000:3000"
+    environment:
+      - ./backend/.env
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - srv
+
+  db:
+    image: postgres:15
+    container_name: postgres-container
+    environment:
+      POSTGRES_DB: baloons
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
